@@ -1,5 +1,6 @@
 import React from "react";
 import { useRef } from "react";
+import classes from "./NewTodo.module.css";
 
 const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   //onAddTodo를 프롭스로 받을 것이기 때문에 함수형 컴포넌트라는 React.FC에 onAddTodo를 받을 것이라고 명시. 또한 이것은 함수라는 것을 의미하기위해 화살표함수를 사용하였는데, 리턴을 해버리면 밑에서 변수도 못 넣고 상수도 못 넣을 것이기 때문에 return값을 넣지 않고 그냥 void로 처리. //! 원래는 매개변수를 비워뒀지만, 아래에서 onAddTodo에 매개변수를 넣었기 때문에 위에도 넣어야 한다. 변수명은 아무렇게나 넣어도 되지만 이 또한 type을 정의해주어야 한다.
@@ -20,7 +21,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={classes.form}>
       <label htmlFor="text">TodoText</label>
       <input type="text" id="text" ref={todoTextInputRef} />
       <button onClick={submitHandler}>Add Todo</button>
